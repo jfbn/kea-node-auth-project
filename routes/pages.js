@@ -16,8 +16,11 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/electives', (req, res) => {
-    console.log("hej");
-    return res.send({response: "HEJ"});
+    if(req.session.isloggedin == true) {
+        return res.sendFile(parentDir+'/pages/electives.html');
+    } else {
+        return res.sendFile(parentDir+'/pages/login.html');
+    }
 })
 
 module.exports = router;
